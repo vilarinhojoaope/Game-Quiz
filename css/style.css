@@ -21,6 +21,8 @@
     /* align-items: stretch; */
         
     position: fixed;
+    right: 5%;
+    top: 5%;
 
     box-sizing: border-box;
     width: fit-content;
@@ -36,8 +38,8 @@
     cursor: pointer;
     display: block;
 
-    width: 10vh;
-    height: 10vh;
+    width: 8vh;
+    height: 8vh;
 
     border:none;
     border-radius: 50%;
