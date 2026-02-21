@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
+
+
+    <title>Quiz</title>
+
+</head>
+<body>
+    <div class="app">
+        <div class="controls">
+            <button id="constrols_button_before" class="controls_button slackey-regular">
+                <svg id="before" class="controls_button_svg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="800px" height="800px" viewBox="0 0 24 24" id="next" data-name="Flat Color" class="icon flat-color" transform="rotate(180)">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier">
+                    <path id="primary" d="M18.6,11.2l-12-9A1,1,0,0,0,5,3V21a1,1,0,0,0,.55.89,1,1,0,0,0,1-.09l12-9a1,1,0,0,0,0-1.6Z"/>
+                    </g>
+                </svg>
+             </button>
+            <button id="constrols_button_next" class="controls_button slackey-regular">
+                <svg id="next" class="controls_button_svg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="800px" height="800px" viewBox="0 0 24 24" id="next" data-name="Flat Color"><path id="primary" d="M18.6,11.2l-12-9A1,1,0,0,0,5,3V21a1,1,0,0,0,.55.89,1,1,0,0,0,1-.09l12-9a1,1,0,0,0,0-1.6Z"/></svg>
+            </button>
+        </div>
+        <div class="quiz_container"> 
+            <div class="quiz_ballon">
+                <svg class="quiz_ballon_svg" width="300" height="200" viewBox="0 0 300 200">
+    
+                    <path d="M 5,100 
+                            C 10,50 50,10 150,10
+                            C 250,10 290,50 295,100
+                            C 300,150 270,190 150,198
+                            C 120,198 60,190 40,180
+                            C 30,178 2,150 5,100
+                            Z" 
+                        fill="rgb(241,52,105)"
+                        stroke="white"
+                        stroke-width="3"
+                        />
+                </svg>
+                <h1 class="slackey-regular quiz_title">Quiz</h1>
+                <div class="quiz_text">
+                    <h4 class="slackey-regular quiz_ask">Qual destas técnicas usa tinta diluída em água?</h4>
+                </div>
+            </div>
+            <div class="quiz_questions">
+                <button class="btn slackey-regular">Aquarela</button>
+                <button class="btn slackey-regular">Óleo</button>
+                <button class="btn slackey-regular">Têmpera</button>
+                <button class="btn slackey-regular">Guache</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
