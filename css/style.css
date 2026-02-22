@@ -232,6 +232,11 @@
     border: 4px solid white;
     animation: shakeIncorrect 2s ease;
 }
+#quiz_answer.visited{
+    background: rgb(47, 171, 253);
+    border: 4px solid white;
+    transform: scale(1.05);
+}
 .btn.buttonDisabled{
     animation: none;
 }
