@@ -2,32 +2,32 @@ const questions =[
     {
         question: "question 1?",
         answer:[
-            {id:"1", text:"uma",correct:true,selected:false},
-            {id:"2", text:"duas",correct:false,selected:false},
-            {id:"3", text:"tres",correct:false,selected:false},
-            {id:"4", text:"quatro",correct:false,selected:false},
+            {id:"1", text:"uma",correct:true,selected:0},
+            {id:"2", text:"duas",correct:false,selected:0},
+            {id:"3", text:"tres",correct:false,selected:0},
+            {id:"4", text:"quatro",correct:false,selected:0},
         ],
-        visited:false
+        visited:false,
     },
     {
         question: "question 2?",
         answer:[
-            {id:"1", text:"Aquarela",correct:true,selected:false},
-            {id:"2", text:"Óleo",correct:false,selected:false},
-            {id:"3", text:"Têmpera",correct:false,selected:false},
-            {id:"4", text:"Guache",correct:false,selected:false},
+            {id:"1", text:"Aquarela",correct:false,selected:0},
+            {id:"2", text:"Óleo",correct:true,selected:0},
+            {id:"3", text:"Têmpera",correct:false,selected:0},
+            {id:"4", text:"Guache",correct:false,selected:0},
         ],
-        visited:false
+        visited:false,
     },
     {
         question: "question 3?",
         answer:[
-            {id:"1", text:"Aquarela",correct:false,selected:false},
-            {id:"2", text:"Óleo",correct:false,selected:false},
-            {id:"3", text:"Têmpera",correct:false,selected:false},
-            {id:"4", text:"Guache",correct:true,selected:false},
+            {id:"1", text:"Aquarela",correct:false,selected:0},
+            {id:"2", text:"Óleo",correct:false,selected:0},
+            {id:"3", text:"Têmpera",correct:false,selected:0},
+            {id:"4", text:"Guache",correct:true,selected:0},
         ],
-        visited:false
+        visited:false,
     }
 ];
 
@@ -57,22 +57,10 @@ function showQuestion(){
     let currentQuestion = questions[currentQuestionIndex];
     questionText.innerHTML = currentQuestion.question;
 
-    if(currentQuestion.visited == true && currentQuestion.visited == true){
-        // quizAnswer.classList.add("visited");
-    }
-
     currentQuestion.answer.forEach((answer)=>{
 
         const button = document.createElement("button");
         button.innerHTML = answer.text;
-
-        // if(answer.selected == true ){
-        //     currentButton = document.querySelector(`.btn[data-id="${answer.id}"]`);
-        //     currentButton.classList.add("correct");
-        // }else if(answer.selected == false){
-        //     currentButton = document.querySelector(`.btn[data-id="${answer.id}"]`);
-        //     currentButton.classList.add("correct"); 
-        // }
 
         button.classList.add("btn");
 
@@ -82,12 +70,27 @@ function showQuestion(){
         button.addEventListener("click",checkAnswer);
         quizAnswer.appendChild(button);
 
-        if(answer.selected == true){
-            currentButton = document.querySelector(`.btn[data-id="${answer.id}"]`);
-            currentButton.classList.add("correct");
-        }
+        // if(answer.selected == true){
+        //     let currentButton = document.querySelector(`.btn[data-id="${answer.id}"]`);
+        //     currentButton.classList.add("correct");
+        // }else if(answer.selected == false && questions[answer.id-1].visited == true){
+        //     let currentButton = document.querySelector(`.btn[data-id="${answer.id}"]`);
+        //     currentButton.classList.add("incorrect");
+        // }
+        let currentButton = document.querySelector(`.btn[data-id="${answer.id}"]`);
 
+        if(answer.selected == 1){
+            currentButton.classList.add("correct");
+        }else if(answer.selected == 2){
+            currentButton.classList.add("incorrect");
+        }
     });
+
+    if(currentQuestion.visited == true){
+        Array.from(quizAnswer.children).forEach((button) => {
+            button.disabled = true;
+        })
+    }
 
 }
 function reloadQuestionState(){
@@ -105,8 +108,14 @@ function checkAnswer(e){
     /*O PROBLEMA ESTAVA AQUI*/ 
     if(isCorrect){
         selectedButton.classList.add("correct");
-        questions[currentQuestionIndex].answer[selectedButton.dataset.id-1].selected = true;
+        questions[currentQuestionIndex].answer[selectedButton.dataset.id-1].selected = 1;
+        reloadQuestionState();  
         score++;
+    }else{
+        selectedButton.classList.add("incorrect");
+        questions[currentQuestionIndex].answer[selectedButton.dataset.id-1].selected = 2;
+        reloadQuestionState(); 
+    
     }
     // questions[currentQuestionIndex].answer[selectedButton.dataset.id].selected = true;
 
@@ -116,7 +125,6 @@ function checkAnswer(e){
             button.classList.add("buttonDisabled");
         },500)
     });
-    reloadQuestionState(); 
 }
 
 function handleBeforeButton(){
