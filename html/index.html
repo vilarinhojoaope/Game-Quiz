@@ -9,8 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
-
-
+   
     <title>Quiz</title>
 
 </head>
@@ -48,10 +47,10 @@
                 </svg>
                 <h1 class="slackey-regular quiz_title">Quiz</h1>
                 <div class="quiz_text">
-                    <h4 class="slackey-regular quiz_ask">Qual destas técnicas usa tinta diluída em água?</h4>
+                    <h4 id="quiz_question" class="slackey-regular quiz_ask">Default question</h4>
                 </div>
             </div>
-            <div class="quiz_questions">
+            <div id="quiz_answer" class="quiz_questions">
                 <button class="btn slackey-regular">Aquarela</button>
                 <button class="btn slackey-regular">Óleo</button>
                 <button class="btn slackey-regular">Têmpera</button>
@@ -59,5 +58,8 @@
             </div>
         </div>
     </div>
+    <script src="../js/script.js"></script>
+
 </body>
+
 </html>
