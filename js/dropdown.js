@@ -40,7 +40,7 @@ function loadPlayers(){
     resetPlayers();
     players.forEach(player => {
         const button = document.createElement("button");
-        button.innerHTML = `${player.name} | points: ${player.point}`;
+        button.innerHTML = `${player.name} | ${player.point}`;
         button.classList.add("selector_option");
         button.classList.add("slackey-regular");
         button.dataset.id = player.id;
