@@ -9,26 +9,47 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
-   
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    
     <title>Quiz</title>
 
 </head>
 <body>
     <div class="app">
-        <div class="controls">
-            <button id="constrols_button_before" class="controls_button slackey-regular">
-                <svg id="before" class="controls_button_svg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="800px" height="800px" viewBox="0 0 24 24" id="next" data-name="Flat Color" class="icon flat-color" transform="rotate(180)">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-                    <g id="SVGRepo_iconCarrier">
-                    <path id="primary" d="M18.6,11.2l-12-9A1,1,0,0,0,5,3V21a1,1,0,0,0,.55.89,1,1,0,0,0,1-.09l12-9a1,1,0,0,0,0-1.6Z"/>
-                    </g>
-                </svg>
-             </button>
-            <button id="constrols_button_next" class="controls_button slackey-regular">
-                <svg id="next" class="controls_button_svg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="800px" height="800px" viewBox="0 0 24 24" id="next" data-name="Flat Color"><path id="primary" d="M18.6,11.2l-12-9A1,1,0,0,0,5,3V21a1,1,0,0,0,.55.89,1,1,0,0,0,1-.09l12-9a1,1,0,0,0,0-1.6Z"/></svg>
-            </button>
-        </div>
+        <div class="header">
+            <div class="selector">
+                <button class="selector_option selector_current slackey-regular">João Pedro</button>
+                <div class="selector_options">
+                    <button class="selector_option slackey-regular">Ana Beatriz</button>
+                    <button class="selector_option slackey-regular">Carlos Eduardo</button>
+                    <button class="selector_option slackey-regular">Mariana Silva</button>
+                    <button class="selector_option slackey-regular">Pedro Henrique</button>
+                    <button class="selector_option slackey-regular">Juliana Costa</button>
+                    <button class="selector_option slackey-regular">Lucas Oliveira</button>
+                    <button class="selector_option slackey-regular">Fernanda Santos</button>
+                    <button class="selector_option slackey-regular">Rafael Almeida</button>
+                    <button class="selector_option slackey-regular">Camila Rodrigues</button>
+                    <button class="selector_option slackey-regular">Gabriel Souza</button>
+                    <button class="selector_option slackey-regular">Amanda Ferreira</button>
+                    <button class="selector_option slackey-regular">Bruno Lima</button>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="constrols_button_before" class="controls_button slackey-regular">
+                    <svg id="before" class="controls_button_svg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="800px" height="800px" viewBox="0 0 24 24" id="next" data-name="Flat Color" class="icon flat-color" transform="rotate(180)">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                        <g id="SVGRepo_iconCarrier">
+                        <path id="primary" d="M18.6,11.2l-12-9A1,1,0,0,0,5,3V21a1,1,0,0,0,.55.89,1,1,0,0,0,1-.09l12-9a1,1,0,0,0,0-1.6Z"/>
+                        </g>
+                    </svg>
+                </button>
+                <button id="constrols_button_next" class="controls_button slackey-regular">
+                    <svg id="next" class="controls_button_svg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="800px" height="800px" viewBox="0 0 24 24" id="next" data-name="Flat Color"><path id="primary" d="M18.6,11.2l-12-9A1,1,0,0,0,5,3V21a1,1,0,0,0,.55.89,1,1,0,0,0,1-.09l12-9a1,1,0,0,0,0-1.6Z"/></svg>
+                </button>
+            </div>
+        </div>  
         <div class="quiz_container"> 
             <div class="quiz_ballon">
                 <svg class="quiz_ballon_svg" width="300" height="200" viewBox="0 0 300 200">
@@ -57,7 +78,11 @@
                 <button data-id="4" class="btn slackey-regular">Guache</button>
             </div>
         </div>
+        <div class="footer roboto">
+            <span>2026 Blautzz © Todos os direitos reservados.</span>
+        </div>
     </div>
+
     <script src="../js/script.js"></script>
 
 </body>

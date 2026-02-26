@@ -1,31 +1,51 @@
 const questions =[
     {
-        question: "question 1?",
+        question: "Qual número tem 3 centenas, 5 dezenas e 2 unidades?",
         answer:[
-            {id:"1", text:"uma",correct:true,selected:0},
-            {id:"2", text:"duas",correct:false,selected:0},
-            {id:"3", text:"tres",correct:false,selected:0},
-            {id:"4", text:"quatro",correct:false,selected:0},
+            {id:"1", text:"352",correct:true,selected:0},
+            {id:"2", text:"325",correct:false,selected:0},
+            {id:"3", text:"512",correct:false,selected:0},
+            {id:"4", text:"262",correct:false,selected:0},
         ],
         visited:false,
     },
     {
-        question: "question 2?",
+        question: "No número 478, o algarismo 7 representa:",
         answer:[
-            {id:"1", text:"Aquarela",correct:false,selected:0},
-            {id:"2", text:"Óleo",correct:true,selected:0},
-            {id:"3", text:"Têmpera",correct:false,selected:0},
-            {id:"4", text:"Guache",correct:false,selected:0},
+            {id:"1", text:"7 unidades",correct:false,selected:0},
+            {id:"2", text:"7 cetenas",correct:false,selected:0},
+            {id:"3", text:"78 dezenas",correct:false,selected:0},
+            {id:"4", text:"7 dezenas",correct:true,selected:0},
         ],
         visited:false,
     },
     {
-        question: "question 3?",
+        question: "Quantas dezenas existem em 120?",
         answer:[
-            {id:"1", text:"Aquarela",correct:false,selected:0},
-            {id:"2", text:"Óleo",correct:false,selected:0},
-            {id:"3", text:"Têmpera",correct:false,selected:0},
-            {id:"4", text:"Guache",correct:true,selected:0},
+            {id:"1", text:"10",correct:false,selected:0},
+            {id:"2", text:"12",correct:true,selected:0},
+            {id:"3", text:"11",correct:false,selected:0},
+            {id:"4", text:"2",correct:false,selected:0},
+        ],
+        visited:false,
+    },
+    {
+        question: "Qual é o valor posicional do algarismo 4 no número 246?",
+        answer:[
+            {id:"1", text:"4",correct:false,selected:0},
+            {id:"2", text:"40",correct:true,selected:0},
+            {id:"3", text:"400",correct:false,selected:0},
+            {id:"4", text:"24",correct:false,selected:0},
+        ],
+        visited:false,
+    },
+    {
+        question: "Qual número é formado por 9 dezenas e 6 unidades?",
+        answer:[
+            {id:"1", text:"69",correct:false,selected:0},
+            {id:"2", text:"90",correct:false,selected:0},
+            {id:"3", text:"96",correct:true,selected:0},
+            {id:"4", text:"196",correct:false,selected:0},
         ],
         visited:false,
     }
@@ -113,6 +133,7 @@ function checkAnswer(e){
         score++;
     }else{
         selectedButton.classList.add("incorrect");
+
         questions[currentQuestionIndex].answer[selectedButton.dataset.id-1].selected = 2;
         reloadQuestionState(); 
     
