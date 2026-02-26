@@ -32,14 +32,15 @@ function resetPlayers(){
 function releaseData(e){
     const selectedButton = e.target;
     let selectedIndex = selectedButton.dataset.id;
-    buttonCurrent.innerHTML = players[selectedIndex].name;
+    buttonCurrent.dataset.id = selectedIndex;
+    buttonCurrent.innerHTML = `${players[selectedIndex].name} | ${players[selectedIndex].point}`;
     boxOption.classList.toggle("actived");
 }
 function loadPlayers(){
     resetPlayers();
     players.forEach(player => {
         const button = document.createElement("button");
-        button.innerHTML = player.name;
+        button.innerHTML = `${player.name} | points: ${player.point}`;
         button.classList.add("selector_option");
         button.classList.add("slackey-regular");
         button.dataset.id = player.id;

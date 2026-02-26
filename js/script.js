@@ -111,6 +111,16 @@ function reloadQuestionState(){
         questions[currentQuestionIndex].visited = true;
     }
 }
+function addScore(){
+        players.forEach(player => {
+            console.log(buttonCurrent.dataset.id);
+            if (player.id == buttonCurrent.dataset.id) {
+                player.point++;
+                buttonCurrent.innerHTML = `${player.name} | ${player.point}`;
+            }
+        });
+        loadPlayers();
+}
 function checkAnswer(e){
     answers = questions[currentQuestionIndex].answer;
     const correctAnswer = answers.filter((answer) => answer.correct == true)[0];
@@ -118,11 +128,11 @@ function checkAnswer(e){
 
     const isCorrect = selectedButton.dataset.id == correctAnswer.id;  
 
-    /*O PROBLEMA ESTAVA AQUI*/ 
     if(isCorrect){
         selectedButton.classList.add("correct");
         questions[currentQuestionIndex].answer[selectedButton.dataset.id-1].selected = 1;
         reloadQuestionState();  
+        addScore();
         score++;
     }else{
         selectedButton.classList.add("incorrect");
