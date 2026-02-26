@@ -90,13 +90,6 @@ function showQuestion(){
         button.addEventListener("click",checkAnswer);
         quizAnswer.appendChild(button);
 
-        // if(answer.selected == true){
-        //     let currentButton = document.querySelector(`.btn[data-id="${answer.id}"]`);
-        //     currentButton.classList.add("correct");
-        // }else if(answer.selected == false && questions[answer.id-1].visited == true){
-        //     let currentButton = document.querySelector(`.btn[data-id="${answer.id}"]`);
-        //     currentButton.classList.add("incorrect");
-        // }
         let currentButton = document.querySelector(`.btn[data-id="${answer.id}"]`);
 
         if(answer.selected == 1){
