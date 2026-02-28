@@ -6,7 +6,7 @@ buttonCurrent.addEventListener("click", ()=>{
     boxOption.classList.toggle("actived");
 });
 
-players = [
+const players = [
     {id:0,name:"Carlos Eduardo",point:0},
     {id:1,name:"Marina Silva",point:0},
     {id:2,name:"Pedro Henrique",point:0},
