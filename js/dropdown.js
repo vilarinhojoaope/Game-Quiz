@@ -1,7 +1,7 @@
 
 const buttonCurrent = document.getElementById("selector_current");
 const boxOption = document.querySelector(".selector_dropdown")
-
+let selectedIndex = 0;
 buttonCurrent.addEventListener("click", ()=>{
     boxOption.classList.toggle("actived");
 });
@@ -24,6 +24,14 @@ const players = [
     {id:14,name:"Seu zé da pop 100 leão",point:0},
     {id:15,name:"Ekko",point:0},
 ];
+function defaultPlayer(){
+    players.forEach(player => {
+        player.point = 0;
+    });
+    loadPlayers();
+    buttonCurrent.innerHTML = `${players[selectedIndex].name} | 0`;
+
+}
 function resetPlayers(){
     while(boxOption.firstChild){
         boxOption.removeChild(boxOption.firstChild);
@@ -31,7 +39,7 @@ function resetPlayers(){
 }
 function releaseData(e){
     const selectedButton = e.target;
-    let selectedIndex = selectedButton.dataset.id;
+    selectedIndex = selectedButton.dataset.id;
     buttonCurrent.dataset.id = selectedIndex;
     buttonCurrent.innerHTML = `${players[selectedIndex].name} | ${players[selectedIndex].point}`;
     boxOption.classList.toggle("actived");

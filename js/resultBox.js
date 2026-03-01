@@ -14,14 +14,16 @@ finishButton.addEventListener("click",showRank);
 finishBackButton.addEventListener("click",()=>{
     resultBox.classList.remove("activedIn");
     resultBox.classList.add("activedOut");
-
     setTimeout(() => {
         resultBox.style.display = 'none';
     }, 200);
+    defaultQuestions();
+    defaultPlayer();
 });
 
 let points = [];
 const topRank = [];
+
 
 function getTopScore(n){
     const ranking = [];
