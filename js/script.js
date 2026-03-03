@@ -1,3 +1,15 @@
+const questionText = document.getElementById("quiz_question");
+const quizAnswer = document.getElementById("quiz_answer");
+const buttonBefore = document.getElementById("constrols_button_before");
+const buttonNext = document.getElementById("constrols_button_next");
+let dirControlButton = 1;
+
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+let visitedQuestions = [];
+let maxQuestions = questions.length;
 
 function defaultQuestions(){
     questions.forEach(question => {
@@ -11,23 +23,23 @@ function defaultQuestions(){
     showQuestion();
 }
 
-const questionText = document.getElementById("quiz_question");
-const quizAnswer = document.getElementById("quiz_answer");
-const buttonBefore = document.getElementById("constrols_button_before");
-const buttonNext = document.getElementById("constrols_button_next");
-let dirControlButton = 1;
-
-
-let currentQuestionIndex = 0;
-let score = 0;
-
 function randomIntMinMax(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
+
+    let index = Math.floor(Math.random() * (max - min)) + min;
+    // while(visitedQuestions.includes(index) == true){
+    //     if(visitedQuestions.length < maxQuestions){
+    //         index = Math.floor(Math.random() * (max - min)) + min;
+    //     }else{
+    //         return 0;
+    //     }
+    // }
+    return index;
 }
 
 function start(){
     currentQuestionIndex = 0;
     score = 0;
+    currentQuestionIndex = randomIntMinMax(0,maxQuestions);
     showQuestion();
 }
 function resetState(){
@@ -36,10 +48,13 @@ function resetState(){
         quizAnswer.removeChild(quizAnswer.firstChild);
     }
 }
+
 function showQuestion(){
     resetState();
-    currentQuestionIndex = randomIntMinMax(0,29);
     let currentQuestion = questions[currentQuestionIndex];
+
+    visitedQuestions.push(currentQuestionIndex);
+
     questionText.innerHTML = currentQuestion.question;
 
     currentQuestion.answer.forEach((answer)=>{
@@ -117,23 +132,13 @@ function checkAnswer(e){
 }
 
 function handleBeforeButton(){
-    currentQuestionIndex-=1;
-
-    if(currentQuestionIndex >= 0){
-        showQuestion();
-    }else{
-        currentQuestionIndex = 0;
-    }
+    currentQuestionIndex = randomIntMinMax(0,maxQuestions);
+    showQuestion();
 }
 function handleNextButton(){
-    currentQuestionIndex+=1;
 
-    if(currentQuestionIndex < questions.length){
-        showQuestion();
-    }else{
-        currentQuestionIndex = questions.length-1;
-        showQuestion();
-    }
+    currentQuestionIndex = randomIntMinMax(0,maxQuestions);
+    showQuestion();
 }
 buttonBefore.addEventListener("click",()=>{
 

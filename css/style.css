@@ -456,6 +456,7 @@
     pointer-events: none;
 }
 .result_container.activedOut .app{
+    
     pointer-events: auto;
 }
 .result_container.activedIn .result{
@@ -500,7 +501,7 @@
     position: relative;
     will-change: transform;
     z-index: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 
     display: flex;
     justify-content: center;
@@ -516,6 +517,9 @@
     font-size: 12px;
     background: white;
     transition: all 0.3s ease;
+}
+.result_player:hover{
+    scale: 1.08;
 }
 .result_player::before{
     z-index: -1;
@@ -542,6 +546,16 @@
     background: none;
     color: white;
 }
+.ranking-icon-wrapper{
+    position: absolute;
+    inset: 0;
+    width: fit-content;
+    height: fit-content;
+    transition: all 0.3s ease;
+}
+.result_player:hover .ranking-icon-wrapper{
+    transform: translateX(calc(var(--widthRank) - 60px));
+}
 .ranking-icon{
     position: absolute;
     left: 0;
@@ -549,10 +563,30 @@
     height: 60px;
     transition: transform 0.3s ease;
 }
-
-.result_player:hover .ranking-icon{
-    transform: translateX(calc(var(--widthRank) - 60px));
+@keyframes shakeHold{
+    0%,24%{
+        transform: rotate(5deg),translateX(0);
+    }
+    25%,45%{
+        transform: rotate(0deg);
+    }
+    45%,65%{
+        transform: rotate(-5deg);
+    }
+    65%,100%{
+        transform: rotate(0deg);
+    }
 }
+@keyframes translateHold{
+    0%,100%{
+        transform: translateX(calc(var(--widthRank) - 60px));
+    }
+}
+.result_player:hover .ranking-icon{
+    /* transform: translateX(calc(var(--widthRank) - 60px)); */
+    animation: shakeHold 0.8s infinite;
+}
+
 .result_footer{
     position: relative;
 

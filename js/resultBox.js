@@ -66,6 +66,9 @@ function showRank(){
         button.classList.add("result_player");
         button.classList.add("slackey-regular");
 
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("ranking-icon-wrapper");
+
         const img = document.createElement("img");
         img.src = srcList[i];
         img.classList.add("ranking-icon");
@@ -82,42 +85,11 @@ function showRank(){
             text.textContent = ranking[i].name;
             button.classList.remove("actived");
         });
-        button.appendChild(img);
+        button.appendChild(wrapper);
+        wrapper.appendChild(img);
         button.appendChild(text); 
         resultPlayers.appendChild(button);
         
     }
     
 }
-// function showRank(){
-//     const ranking = getTopScore(3);
-//     resetResult();
-   
-//     for(let i=0; i<3; i++){
-//         const button = document.createElement("div");
-//         button.classList.add("result_player","slackey-regular");
-
-//         const img = document.createElement("img");
-//         img.src = srcList[i];
-//         img.classList.add("ranking-icon");
-
-//         const text = document.createElement("span");
-//         text.textContent = ranking[i].name;
-
-//         button.dataset.id = i;
-
-//         button.addEventListener("mouseenter",(e)=>{
-//             text.textContent = `${ranking[i].point} pontos`;
-//             button.classList.add("actived");
-//         });
-
-//         button.addEventListener("mouseleave",(e)=>{
-//             text.textContent = ranking[i].name;
-//             button.classList.remove("actived");
-//         });
-
-//         button.appendChild(img);
-//         button.appendChild(text);
-//         resultPlayers.appendChild(button);
-//     }
-// }
