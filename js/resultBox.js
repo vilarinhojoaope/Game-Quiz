@@ -5,7 +5,7 @@ const finishBackButton = document.getElementById("btn-result-back");
 const resultPlayers = document.querySelector(".result_players");
 
 finishButton.addEventListener("click",()=>{
-    resultBox.style.display = 'flex';
+    // resultBox.style.display = 'flex';
     resultBox.classList.add("activedIn");
     resultBox.classList.remove("activedOut");
 });
@@ -14,9 +14,9 @@ finishButton.addEventListener("click",showRank);
 finishBackButton.addEventListener("click",()=>{
     resultBox.classList.remove("activedIn");
     resultBox.classList.add("activedOut");
-    setTimeout(() => {
-        resultBox.style.display = 'none';
-    }, 200);
+    // setTimeout(() => {
+    //     resultBox.style.display = 'none';
+    // }, 200);
     defaultQuestions();
     defaultPlayer();
 });
@@ -52,16 +52,72 @@ function resetResult(){
     }
 
 }
+let srcList = ["../src/icons/primeiro-lugar.png","../src/icons/segundo-lugar.png","../src/icons/terceiro-lugar.png"];
+
+
+
 function showRank(){
     const ranking = getTopScore(3);
     resetResult();
    
     for(let i=0; i<3; i++){
-        const button = document.createElement("button");
-        button.innerHTML = `${ranking[i].name} : ${ranking[i].point} pontos`;
+        const button = document.createElement("div");
+        // button.innerHTML = `${ranking[i].name} : ${ranking[i].point} pontos`;
         button.classList.add("result_player");
         button.classList.add("slackey-regular");
+
+        const img = document.createElement("img");
+        img.src = srcList[i];
+        img.classList.add("ranking-icon");
+    
+        const text = document.createElement("span");
+        text.textContent = ranking[i].name;
+
+        button.dataset.id = i;
+        button.addEventListener("mouseenter",()=>{
+            text.textContent = `${ranking[i].point} pontos`;
+            button.classList.add("actived");
+        });
+        button.addEventListener("mouseleave",()=>{
+            text.textContent = ranking[i].name;
+            button.classList.remove("actived");
+        });
+        button.appendChild(img);
+        button.appendChild(text); 
         resultPlayers.appendChild(button);
+        
     }
     
 }
+// function showRank(){
+//     const ranking = getTopScore(3);
+//     resetResult();
+   
+//     for(let i=0; i<3; i++){
+//         const button = document.createElement("div");
+//         button.classList.add("result_player","slackey-regular");
+
+//         const img = document.createElement("img");
+//         img.src = srcList[i];
+//         img.classList.add("ranking-icon");
+
+//         const text = document.createElement("span");
+//         text.textContent = ranking[i].name;
+
+//         button.dataset.id = i;
+
+//         button.addEventListener("mouseenter",(e)=>{
+//             text.textContent = `${ranking[i].point} pontos`;
+//             button.classList.add("actived");
+//         });
+
+//         button.addEventListener("mouseleave",(e)=>{
+//             text.textContent = ranking[i].name;
+//             button.classList.remove("actived");
+//         });
+
+//         button.appendChild(img);
+//         button.appendChild(text);
+//         resultPlayers.appendChild(button);
+//     }
+// }

@@ -4,6 +4,8 @@
     --blueSelect:rgb(29, 31, 70);
     --red:rgb(192, 59, 59);
 
+    --widthRank:400px;
+    --heightRank:60px
 }
 *{
     padding: 0;
@@ -392,9 +394,10 @@
 }
 
 .result_container{
-    /*modificar display*/
-    display: none;
-    /* pointer-events: none; */
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -411,35 +414,17 @@
     transition: all 1s ease;
 
 }
-@keyframes blurIn{
-    0%,50%{
-        backdrop-filter: blur(0px); 
-    }50%,100%{
-        backdrop-filter: blur(10px); 
-    }
-    100%{
-        backdrop-filter: blur(10px); 
-    }
-}
-@keyframes blurOut{
-    0%,50%{
-        backdrop-filter: blur(10px); 
-    }50%,100%{
-        backdrop-filter: blur(0px); 
-    }
-    100%{
-        backdrop-filter: blur(0px); 
-    }
-}
 .result_container.activedIn{
-    display: flex;
-    animation: blurIn 0.3s ease;
-    backdrop-filter: blur(10px);
+    opacity: 1;
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.5);
 }
 .result_container.activedOut{
-    display: flex;
-    animation: blurOut 0.6s ease;
-    backdrop-filter: blur(0px);
+    opacity: 0;
+    pointer-events: none;
+    /* animation: blurOut 0.6s ease; */
+    background: rgba(0, 0, 0, 0.5);
+
 }
 @keyframes translateBTT{
     0%,50%{
@@ -464,16 +449,22 @@
     background-size: contain;
 
     border: 4px solid white;
+
     transform: translateY(200%);
 }
+.result_container.activedIn .app{
+    pointer-events: none;
+}
+.result_container.activedOut .app{
+    pointer-events: auto;
+}
 .result_container.activedIn .result{
-    animation: translateBTT 0.6s ease;
-    transform: translateY(0); 
+    animation: translateBTT 0.3s ease;
+    transform: translateY(0%); 
 }
 .result_container.activedOut .result{
-    animation: translateTTB 0.6s ease;
+    animation: translateTTB 0.3s ease;
     transform: translateY(200%); 
-
 }
 .result_header{
     position: relative;
@@ -493,26 +484,74 @@
     box-sizing: border-box;
     width: 100%;
     height: 85%;
+    display: flex;
+    justify-content: center;
     padding: 10% 10%;
 }
 .result_players{
-    width: 100%;
+    will-change: transform, background-color;
+    transform: translateZ(0); /* Força aceleração GPU */
+    backface-visibility: hidden;
+    width: 80%;
     height: 100%;
     /* background-color: red; */
 }
 .result_player{
+    position: relative;
+    will-change: transform;
+    z-index: 0;
+    overflow: hidden;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 40px;
+
+    width: var(--widthRank);
+    height: var(--heightRank);
     border-radius: 100px;
 
-    margin-bottom: 4px;
+    margin-bottom: 12px;
 
     color: var(--blue);
     font-size: 12px;
     background: white;
+    transition: all 0.3s ease;
+}
+.result_player::before{
+    z-index: -1;
+    position: absolute;
+    content: "";
+    inset: 0;
+
+
+    border-radius: 100px;
+    background: var(--pink);
+
+    transform: scale(0);
+    transition: all 0.3s ease;
+}
+
+.result_player span{
+    z-index: 0;
+    display: block;
+}
+.result_player.actived::before{
+    transform: scale(1);
+}
+.result_player.actived{
+    background: none;
+    color: white;
+}
+.ranking-icon{
+    position: absolute;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    transition: transform 0.3s ease;
+}
+
+.result_player:hover .ranking-icon{
+    transform: translateX(calc(var(--widthRank) - 60px));
 }
 .result_footer{
     position: relative;

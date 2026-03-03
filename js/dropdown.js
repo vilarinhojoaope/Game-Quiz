@@ -7,8 +7,8 @@ buttonCurrent.addEventListener("click", ()=>{
 });
 
 const players = [
-    {id:0,name:"Carlos Eduardo",point:0},
-    {id:1,name:"Marina Silva",point:0},
+    {id:0,name:"Ana Flávia",point:0},
+    {id:1,name:"Pedro Henrique",point:0},
     {id:2,name:"Pedro Henrique",point:0},
     {id:3,name:"Juliana Costa",point:0},
     {id:4,name:"Lucas Oliveira",point:0},
