@@ -2,6 +2,7 @@ const questionText = document.getElementById("quiz_question");
 const quizAnswer = document.getElementById("quiz_answer");
 const buttonBefore = document.getElementById("constrols_button_before");
 const buttonNext = document.getElementById("constrols_button_next");
+
 let dirControlButton = 1;
 
 
@@ -9,13 +10,27 @@ let currentQuestionIndex = 0;
 let score = 0;
 
 let visitedQuestions = [];
+let visitedQuestionsCopy = [];
+
 let maxQuestions = questions.length;
+console.log(maxQuestions)
+
 
 function defaultQuestions(){
+
+    visitedQuestions = [];
+    visitedQuestionsCopy = [];
+    buttonBefore.classList.remove("enabled");
+    if(questions.length > 1){
+        buttonNext.classList.add("enabled");
+    }else{
+        buttonNext.classList.remove("enabled");
+
+    }
+
     questions.forEach(question => {
         question.answer.forEach(answer => {
             answer.selected = 0;
-            console.log("resetado");
         })
         question.visited = false;
     });
@@ -37,9 +52,13 @@ function randomIntMinMax(min, max) {
 }
 
 function start(){
-    currentQuestionIndex = 0;
     score = 0;
     currentQuestionIndex = randomIntMinMax(0,maxQuestions);
+    visitedQuestions.push(currentQuestionIndex);
+    visitedQuestionsCopy.push(currentQuestionIndex);
+
+    console.log(currentQuestionIndex);
+
     showQuestion();
 }
 function resetState(){
@@ -52,8 +71,6 @@ function resetState(){
 function showQuestion(){
     resetState();
     let currentQuestion = questions[currentQuestionIndex];
-
-    visitedQuestions.push(currentQuestionIndex);
 
     questionText.innerHTML = currentQuestion.question;
 
@@ -93,7 +110,7 @@ function reloadQuestionState(){
 }
 function addScore(){
         players.forEach(player => {
-            console.log(buttonCurrent.dataset.id);
+            // console.log(buttonCurrent.dataset.id);
             if (player.id == buttonCurrent.dataset.id) {
                 player.point++;
                 buttonCurrent.innerHTML = `${player.name} | ${player.point}`;
@@ -130,14 +147,53 @@ function checkAnswer(e){
         },500)
     });
 }
-
+/*next button*/
+if(questions.length > 1){
+    buttonNext.classList.add("enabled");
+}
 function handleBeforeButton(){
-    currentQuestionIndex = randomIntMinMax(0,maxQuestions);
+    buttonNext.disabled = false;
+    buttonNext.classList.add("enabled");
+
+    if(visitedQuestions.length > 1){
+        visitedQuestions.pop();
+        if(visitedQuestions.length == 1){
+            buttonBefore.classList.remove("enabled");
+        }
+        currentQuestionIndex = visitedQuestions[visitedQuestions.length-1];
+    }else if(visitedQuestions.length <= 1){
+        buttonBefore.disabled = true;
+        buttonBefore.classList.remove("enabled");
+    }
+    // console.log(currentQuestionIndex);
     showQuestion();
 }
 function handleNextButton(){
-
+    
     currentQuestionIndex = randomIntMinMax(0,maxQuestions);
+
+    while((visitedQuestionsCopy.includes(currentQuestionIndex) == true) && visitedQuestionsCopy.length < maxQuestions){
+        currentQuestionIndex = randomIntMinMax(0,maxQuestions);
+        console.log("Número de questões visitadas: ",visitedQuestionsCopy.length);
+
+    }
+
+    if(visitedQuestions.length >= maxQuestions){
+        currentQuestionIndex = 0;
+        buttonNext.disabled = true;
+        buttonNext.classList.remove("enabled");
+    
+    }else{
+        buttonNext.classList.add("enabled");
+        visitedQuestions.push(currentQuestionIndex);
+        visitedQuestionsCopy.push(currentQuestionIndex);
+    }
+
+    if(visitedQuestions.length > 1){
+        buttonBefore.disabled = false;
+        buttonBefore.classList.add("enabled");
+    }
+
     showQuestion();
 }
 buttonBefore.addEventListener("click",()=>{

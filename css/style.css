@@ -148,9 +148,51 @@
     color: black;
 
     margin: 0px 8px;
-    background: white;
+    background: rgb(255, 255, 255);
     transition: all 0.2s ease;
 }
+/*Before button enabled visual*/
+#constrols_button_before{
+    background: rgba(255, 255, 255, 0.442);
+}
+#constrols_button_before:hover{
+    background: rgba(255, 255, 255, 0.442);
+}
+#constrols_button_before:hover .controls_button_svg{
+    color: var(--blue);
+}
+#constrols_button_before.enabled:hover{
+    background: rgb(241,52,105);
+}
+#constrols_button_before.enabled:hover .controls_button_svg{
+    color: white;
+}
+#constrols_button_before.enabled{
+    background: rgb(255, 255, 255);
+}
+
+/*Next button enabled visual*/
+#constrols_button_next{
+    background: rgba(255, 255, 255, 0.442);
+}
+#constrols_button_next:hover{
+    background: rgba(255, 255, 255, 0.442);
+}
+#constrols_button_next:hover .controls_button_svg{
+    color: var(--blue);
+}
+#constrols_button_next.enabled:hover{
+    background: rgb(241,52,105);
+}
+#constrols_button_next.enabled:hover .controls_button_svg{
+    color: white;
+}
+#constrols_button_next.enabled{
+    background: rgb(255, 255, 255);
+}
+
+
+
 .controls_button:hover{
     background: rgb(241,52,105);
 }
